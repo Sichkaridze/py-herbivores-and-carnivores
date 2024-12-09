@@ -26,7 +26,7 @@ class Animal:
 
     @classmethod
     def __str__(cls) -> str:
-        return f"[{", ".join(repr(animal) for animal in cls.alive)}]"
+        return "[" + ", ".join(repr(animal) for animal in cls.alive) + "]"
 
 
 class Herbivore(Animal):
