@@ -2,8 +2,9 @@ class Animal:
     alive = []
 
     def __init__(
-            self, name:
-            str, health: int = 100,
+            self,
+            name: str,
+            health: int = 100,
             hidden: bool = False
     ) -> None:
 
@@ -20,13 +21,13 @@ class Animal:
                 f"Hidden: {self.hidden}"
                 f"}}")
 
-    @classmethod
-    def update_alive(cls) -> None:
-        cls.alive = [animal for animal in cls.alive if animal.health > 0]
+    @staticmethod
+    def update_alive() -> None:
+        Animal.alive = [animal for animal in Animal.alive if animal.health > 0]
 
-    @classmethod
-    def __str__(cls) -> str:
-        return "[" + ", ".join(repr(animal) for animal in cls.alive) + "]"
+    @staticmethod
+    def alive_animals_str() -> str:
+        return "[" + ", ".join(repr(animal) for animal in Animal.alive) + "]"
 
 
 class Herbivore(Animal):
@@ -35,6 +36,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
+
     @staticmethod
     def bite(beast: Animal) -> None:
         if isinstance(beast, Herbivore) and not beast.hidden:
